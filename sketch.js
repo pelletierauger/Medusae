@@ -22,8 +22,8 @@ var sketch = new p5(function(p) {
         // p.scale(scale, scale);
         // p.fill(255, 0, 0, 50);
         // p.ellipse(loneParticle.position.x, loneParticle.position.y, 1, 1);
-        loneParticle.update();
-        loneParticle.displayHistory();
+        system.update();
+        system.displayHistory();
     }
     p.keyPressed = function() {
         if (p.keyCode === 32) {
@@ -65,9 +65,9 @@ var geometry = new p5(function(p) {
         // p.scale(scale, scale);
         p.noFill();
         p.stroke(255)
-        p.rect(-box.width / 2, -box.height / 2, box.width, box.height);
+        p.rect(-system.box.width / 2, -system.box.height / 2, system.box.width, system.box.height);
         p.fill(255);
         p.noStroke();
-        p.ellipse(loneParticle.position.x, loneParticle.position.y, 5, 5);
+        p.ellipse(system.position.x, system.position.y, 5, 5);
     }
 });
