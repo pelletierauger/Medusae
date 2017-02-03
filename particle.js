@@ -3,7 +3,11 @@ var System = function(particle) {
     this.velocity = new p5.Vector(particle.velocity.x, particle.velocity.y);
     this.box = particle.box;
     this.history = [];
+    this.historyLength = particle.historyLength;
     this.trailFunction = particle.trailFunction;
+    if (particle.displayHistory) {
+        this.displayHistory = particle.displayHistory;
+    }
 }
 
 System.prototype.update = function() {
@@ -19,13 +23,13 @@ System.prototype.update = function() {
     }
 
     for (var i = 0; i < this.history.length; i++) {
-        this.history[i].x -= this.trailFunction(x, y).x;
-        this.history[i].y -= this.trailFunction(x, y).y;
+        this.history[i].x -= this.trailFunction(x, y, i).x;
+        this.history[i].y -= this.trailFunction(x, y, i).y;
     }
 
     var v = new p5.Vector(this.position.x, this.position.y);
     this.history.push(v);
-    if (this.history.length > 200) {
+    if (this.history.length > this.historyLength) {
         this.history.splice(0, 1);
     }
 }
@@ -50,6 +54,7 @@ var loneParticle = new System({
         width: 120,
         height: 120
     },
+    historyLength: 200,
     trailFunction: function(x, y) {
         var newX = sin(x * 0.1) * 10;
         var newY = sin(y * 0.1) * 10 + cos(x * 0.2) * 10;
