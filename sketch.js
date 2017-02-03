@@ -1,7 +1,7 @@
 var looping = true;
 var box = {
     width: 60,
-    height: 40
+    height: 60
 }
 var showGeometry = true;
 var scale = 1;
@@ -12,7 +12,7 @@ var sketch = new p5(function(p) {
     p.setup = function() {
         p.canvas = p.createCanvas(p.windowWidth, p.windowHeight);
         p.canvas.addClass('one');
-        p.background(0);
+        p.background(50);
         p.noStroke();
         p.frameRate(30);
     }
@@ -21,7 +21,7 @@ var sketch = new p5(function(p) {
         p.translate(p.width / 2, p.height / 2);
         // p.scale(scale, scale);
         // p.fill(255, 0, 0, 50);
-        p.ellipse(loneParticle.position.x, loneParticle.position.y, 1, 1);
+        // p.ellipse(loneParticle.position.x, loneParticle.position.y, 1, 1);
         loneParticle.update();
         loneParticle.displayHistory();
     }
