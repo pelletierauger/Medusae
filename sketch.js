@@ -4,7 +4,7 @@ var box = {
     height: 60
 }
 var showGeometry = true;
-var scale = 1;
+// var scale = 0.5;
 var sin = Math.sin;
 var cos = Math.cos;
 
@@ -19,7 +19,8 @@ var sketch = new p5(function(p) {
     p.draw = function() {
         // p.background(51);
         p.translate(p.width / 2, p.height / 2);
-        // p.scale(scale, scale);
+        p.translate(system.translate.x, system.translate.y);
+        p.scale(system.scale.x, system.scale.y);
         // p.fill(255, 0, 0, 50);
         // p.ellipse(loneParticle.position.x, loneParticle.position.y, 1, 1);
         system.update();
@@ -62,7 +63,8 @@ var geometry = new p5(function(p) {
     p.draw = function() {
         p.clear();
         p.translate(p.width / 2, p.height / 2);
-        // p.scale(scale, scale);
+        p.translate(system.translate.x, system.translate.y);
+        p.scale(system.scale.x, system.scale.y);
         p.noFill();
         p.stroke(255)
         p.rect(-system.box.width / 2, -system.box.height / 2, system.box.width, system.box.height);
