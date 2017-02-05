@@ -7,6 +7,7 @@ var showGeometry = true;
 // var scale = 0.5;
 var sin = Math.sin;
 var cos = Math.cos;
+var tan = Math.tan;
 
 var sketch = new p5(function(p) {
     p.setup = function() {
