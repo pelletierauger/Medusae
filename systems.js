@@ -758,4 +758,28 @@ var fish9 = new System({
     },
     displayFunction: "lines"
 });
-var system = fish9;
+var fish10 = new System({
+    startPosition: { x: 0, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 50,
+        height: 25
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 5,
+        y: 5
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / (7.5 / 4)) * cos(y / (7.5 / 4)) * 2.5;
+        var newY = sin(y / 7.5 / 4) * 2.5;
+        return { x: newX * 1.3, y: newY * 1.2 };
+    },
+    displayFunction: "lines"
+});
+var system = fish10;
