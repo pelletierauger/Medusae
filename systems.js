@@ -427,4 +427,39 @@ var extravertedEgg6 = new System({
     }
 });
 
-var system = extravertedEgg6;
+var peanut = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 4,
+        height: 4
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3.5,
+        y: 3.5
+    },
+    rotate: Math.PI * 0.9,
+    historyLength: 130,
+    trailFunction: function(x, y) {
+        var newX = sin(x * 0.5) * 12 + sin(y * 0.5) * 5;
+        var newY = sin(y * 0.25) * 12 + sin(y * 0.05) * 5;
+        return { x: newX, y: newY };
+    },
+    displayFunction: function(h) {
+        sketch.beginShape(sketch.LINES);
+        sketch.noFill();
+        sketch.strokeWeight(0.25);
+
+        for (var i = h.length - 1; i >= 1; i--) {
+            var mappedAlpha = sketch.map(i, h.length - 1, h.length - h.length / 2, 0, 125);
+            sketch.stroke(255, mappedAlpha);
+            sketch.line(h[i].x, h[i].y, h[i - 1].x, h[i - 1].y);
+        }
+    }
+});
+
+var system = peanut;
