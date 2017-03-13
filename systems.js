@@ -598,4 +598,29 @@ var fish3 = new System({
     displayFunction: "lines"
 });
 
-var system = fish3;
+var fish4 = new System({
+    startPosition: { x: 0, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 5) * 2.5;
+        var newY = sin(y / 2.5) * 2.5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var system = fish4;
