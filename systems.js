@@ -523,4 +523,29 @@ var bubbles = new System({
     displayFunction: "lines"
 });
 
-var system = bubbles;
+var fish = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 1,
+        y: 1
+    },
+    // rotate: Math.PI * 0.75,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 5) * 5;
+        var newY = sin(y / 5) * 2.5;
+        return { x: newX * 1.35, y: newY * 2 };
+    },
+    displayFunction: "lines"
+});
+
+var system = fish;
