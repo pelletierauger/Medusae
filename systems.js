@@ -392,4 +392,39 @@ var extravertedEgg5 = new System({
     }
 });
 
-var system = extravertedEgg5;
+var extravertedEgg6 = new System({
+    startPosition: { x: 0, y: 0 },
+    velocity: { x: 0.16, y: 0.16 },
+    box: {
+        width: 10,
+        height: 20
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 5,
+        y: 5
+    },
+    rotate: Math.PI / 2,
+    historyLength: 25,
+    trailFunction: function(x, y) {
+        var newX = sin(x * 0.125) * 6;
+        var newY = sin(y * 0.125) * cos(x * 0.25) * 6;
+        return { x: newX, y: newY };
+    },
+    displayFunction: function(h) {
+        sketch.beginShape(sketch.LINES);
+        sketch.noFill();
+        sketch.strokeWeight(0.25);
+
+        for (var i = h.length - 1; i >= 1; i--) {
+            var mappedAlpha = sketch.map(i, h.length - 1, h.length - h.length / 2, 0, 125);
+            sketch.stroke(255, mappedAlpha);
+            sketch.line(h[i].x, h[i].y, h[i - 1].x, h[i - 1].y);
+        }
+    }
+});
+
+var system = extravertedEgg6;
