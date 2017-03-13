@@ -709,4 +709,29 @@ var fish7 = new System({
     }
 });
 
-var system = fish7;
+var fish8 = new System({
+    startPosition: { x: 0, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 5,
+        y: 5
+    },
+    rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / (7.5 / 4)) * cos(y / (7.5 / 2)) * 2.5;
+        var newY = sin(y / 7.5) * 2.5;
+        return { x: newX * 0.9, y: newY * 0.7 };
+    },
+    displayFunction: "lines"
+});
+
+var system = fish8;
