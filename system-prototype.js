@@ -7,10 +7,7 @@ var System = function(particle) {
     this.scale = particle.scale || { x: 1, y: 1 };
     this.historyLength = particle.historyLength;
     this.trailFunction = particle.trailFunction;
-
-    if (particle.displayFunction) {
-        this.displayFunction = particle.displayFunction;
-    }
+    this.displayFunction = particle.displayFunction || "dots";
 }
 
 System.prototype.update = function() {
@@ -37,7 +34,7 @@ System.prototype.update = function() {
     }
 }
 
-System.prototype.basicDisplayFunction = function(h) {
+System.prototype.displayDots = function(h) {
     var size = 1;
     for (var i = 0; i < (h.length - 1); i++) {
         var pos = h[(h.length - 1) - i];
@@ -50,10 +47,24 @@ System.prototype.basicDisplayFunction = function(h) {
     }
 };
 
+System.prototype.displayLines = function(h) {
+    sketch.beginShape(sketch.LINES);
+    sketch.noFill();
+    sketch.strokeWeight(0.25);
+    sketch.stroke(255, 125);
+    for (var i = h.length - 1; i >= 1; i--) {
+        sketch.vertex(h[i].x, h[i].y);
+        sketch.vertex(h[i - 1].x, h[i - 1].y);
+    }
+    sketch.endShape();
+}
+
 System.prototype.displayHistory = function() {
-    if (this.displayFunction) {
-        this.displayFunction(this.history);
+    if (this.displayFunction == "dots") {
+        this.displayDots(this.history);
+    } else if (this.displayFunction == "lines") {
+        this.displayLines(this.history);
     } else {
-        this.basicDisplayFunction(this.history);
+        this.displayFunction(this.history);
     }
 };
