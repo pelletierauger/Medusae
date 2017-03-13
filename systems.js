@@ -498,4 +498,29 @@ var peanut2 = new System({
     }
 });
 
-var system = peanut2;
+var bubbles = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 10,
+        height: 10
+    },
+    translate: {
+        x: 610,
+        y: 0
+    },
+    scale: {
+        x: 1,
+        y: 1
+    },
+    // rotate: Math.PI * 0.75,
+    historyLength: 200,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 10) * Math.sign(sin(x / 10)) * 25;
+        var newY = sin(y / 10) * 25;
+        return { x: newX, y: newY };
+    },
+    displayFunction: "lines"
+});
+
+var system = bubbles;
