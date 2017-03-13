@@ -462,4 +462,40 @@ var peanut = new System({
     }
 });
 
-var system = peanut;
+
+var peanut2 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 10,
+        height: 10
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3.5,
+        y: 3.5
+    },
+    rotate: Math.PI * 0.75,
+    historyLength: 130,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 10) * 10;
+        var newY = sin(y / 10) * 10;
+        return { x: newX, y: newY };
+    },
+    displayFunction: function(h) {
+        sketch.beginShape(sketch.LINES);
+        sketch.noFill();
+        sketch.strokeWeight(0.25);
+
+        for (var i = h.length - 1; i >= 1; i--) {
+            var mappedAlpha = sketch.map(i, h.length - 1, h.length - h.length / 2, 0, 125);
+            sketch.stroke(255, mappedAlpha);
+            sketch.line(h[i].x, h[i].y, h[i - 1].x, h[i - 1].y);
+        }
+    }
+});
+
+var system = peanut2;
