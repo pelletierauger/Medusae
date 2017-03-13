@@ -4,10 +4,12 @@ var System = function(particle) {
     this.box = particle.box;
     this.history = [];
     this.translate = particle.translate || { x: 0, y: 0 };
+    this.rotate = particle.rotate || 0;
     this.scale = particle.scale || { x: 1, y: 1 };
     this.historyLength = particle.historyLength;
     this.trailFunction = particle.trailFunction;
     this.displayFunction = particle.displayFunction || "dots";
+
 }
 
 System.prototype.update = function() {

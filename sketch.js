@@ -20,6 +20,7 @@ var sketch = new p5(function(p) {
     p.draw = function() {
         // p.background(51);
         p.translate(p.width / 2, p.height / 2);
+        p.rotate(system.rotate);
         p.translate(system.translate.x, system.translate.y);
         p.scale(system.scale.x, system.scale.y);
         // p.fill(255, 0, 0, 50);
@@ -64,6 +65,7 @@ var geometry = new p5(function(p) {
     p.draw = function() {
         p.clear();
         p.translate(p.width / 2, p.height / 2);
+        p.rotate(system.rotate);
         p.translate(system.translate.x, system.translate.y);
         p.scale(system.scale.x, system.scale.y);
         p.noFill();
