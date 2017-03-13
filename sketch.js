@@ -49,7 +49,7 @@ var sketch = new p5(function(p) {
             }
         }
         if (p.key == 'q' || p.key == 'Q') {
-            sketch.background(0);
+            sketch.background(50);
         }
     }
 });
