@@ -156,35 +156,35 @@ var loneParticle6 = new System({
 
 var loneParticle7 = new System({
     startPosition: { x: 0, y: 0 },
-    velocity: { x: 2, y: 2 },
+    velocity: { x: 0.8, y: 0.4 },
     box: {
-        width: 50,
+        width: 100,
         height: 100
     },
     translate: {
-        x: 600,
+        x: 0,
         y: 0
     },
     scale: {
-        x: 1.2,
-        y: 1.2
+        x: 1.25,
+        y: 1.25
     },
-    historyLength: 210,
+    historyLength: 100,
     trailFunction: function(x, y) {
-        var newX = cos(x / 50) * cos(x / 25) * 6;
-        var newY = sin(y / 50) * sin(x / 10) * 6;
+        var newX = sin(x * 0.05) * 6;
+        var newY = sin(y * 0.25) * 6;
         return { x: newX, y: newY };
     },
     displayFunction: function(h) {
         sketch.beginShape(sketch.LINES);
         sketch.noFill();
-        sketch.strokeWeight(0.5);
-        sketch.stroke(255, 125);
+        sketch.strokeWeight(0.25);
+
         for (var i = h.length - 1; i >= 1; i--) {
-            sketch.vertex(h[i].x, h[i].y * 2);
-            sketch.vertex(h[i - 1].x, h[i - 1].y * 2);
+            var mappedAlpha = sketch.map(i, h.length - 1, h.length - h.length / 2, 0, 125);
+            sketch.stroke(255, mappedAlpha);
+            sketch.line(h[i].x, h[i].y, h[i - 1].x, h[i - 1].y);
         }
-        sketch.endShape();
     }
 });
 
