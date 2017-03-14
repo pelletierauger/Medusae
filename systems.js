@@ -851,8 +851,16 @@ var fish13 = new System({
     // rotate: Math.PI / 5,
     historyLength: 100,
     trailFunction: function(x, y) {
-        var newX = sin(x / (7.5 / 16) + 0.06) * cos(y / (7.5 / 16) + 0.06) * 2.5;
-        var newY = sin(y / 7.5 / 16 + 0.06) * 2.5;
+
+        var newX1 = sin(x / (7.5 / 16)) * cos(y / (7.5 / 16)) * 2.5;
+        var newY1 = sin(y / 7.5 / 16) * 2.5;
+
+        var newX2 = sin(x / (7.5 / 8)) * cos(y / (7.5 / 8)) * 2.5;
+        var newY2 = sin(y / 7.5 / 8) * 1;
+
+        var newX = lerp(newX1, newX2, m);
+        var newY = lerp(newY1, newY2, m);
+
         return { x: newX * 1.3 / 1.5, y: newY * 6 };
     },
     displayFunction: "lines"
