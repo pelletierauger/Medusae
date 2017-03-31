@@ -858,4 +858,276 @@ var fish13 = new System({
     displayFunction: "lines"
 });
 
-var system = fish13;
+var fish14 = new System({
+    startPosition: { x: 25 / 4, y: 25 / 4 },
+    velocity: { x: 0.2, y: -0.2 },
+    box: {
+        width: 25,
+        height: 25
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 4,
+        y: 4
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / (7.5 / 16)) * cos(y / (7.5 / 16)) * 2.5;
+        var newY = sin(y / 7.5 / 16) * 2.5;
+        return { x: newX * 0.8, y: newY * 6 };
+    },
+    displayFunction: function(h) {
+        for (var j = 0; j < 5; j++) {
+            var mapSW = sketch.map(j, 0, 5, 10, 1);
+            var mapAlpha = sketch.map(j, 0, 5, 2, 10);
+            if (j == 4) {
+                mapAlpha = 255;
+                mapSW = 0.25;
+                sketch.stroke(255, 255, 150, mapAlpha);
+            } else {
+                sketch.stroke(0, 150, 255, mapAlpha);
+            }
+            sketch.beginShape();
+            sketch.noFill();
+            sketch.strokeWeight(mapSW);
+
+            for (var i = h.length - 15; i >= 1; i--) {
+                sketch.vertex(h[i].x, h[i].y);
+                sketch.vertex(h[i - 1].x, h[i - 1].y);
+            }
+            sketch.endShape();
+        }
+    }
+});
+
+var fish15 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 500,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 5) * sin(x / 5) * 4.5;
+        var newY = sin(y / 2.5) * 3;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var fish16 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 500,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 5) * sin(x / 5) * 4.5;
+        var newY = sin(y / 5) * 1.5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var fish17 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 570,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 2.5) * sin(x / 2.5) * 6.5;
+        var newY = sin(y) * 5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var fish18 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 570,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 100) * sin(x / 100) * 600.5;
+        var newY = sin(y) * 5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var fish19 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 30,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 10) * cos(x / 10) * 12.5;
+        var newY = sin(y) * 5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var fish20 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 30,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 10) * cos(x / 2.5) * 12;
+        var newY = sin(y) * 5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var fish21 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 30,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 10) * cos(x / 5) * 12;
+        var newY = sin(y) * 5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var fish22 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 30,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 10) * cos(x / 5) * 12;
+        var newY = sin(y / 2) * 5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var fish23 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 30,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 5) * cos(x / 5) * 12;
+        var newY = sin(y / 5) * 2.5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+
+var system = fish23;
