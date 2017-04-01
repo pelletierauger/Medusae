@@ -1129,5 +1129,126 @@ var fish23 = new System({
     displayFunction: "lines"
 });
 
+var marketNight01 = new System({
+    startPosition: { x: 0, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: -50,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    rotate: Math.PI / 2 * 3,
+    historyLength: 50,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 2.5) * sin(x / 5) * 4.5;
+        var newY = sin(y / 5) * 4;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
 
-var system = fish23;
+var marketNight02 = new System({
+    startPosition: { x: 0, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 70,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    rotate: Math.PI / 2 * 3,
+    historyLength: 50,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 1.25) * sin(x / 5) * 5.5;
+        var newY = sin(y / 5) * 4;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+var marketNight03 = new System({
+    startPosition: { x: 0, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 50,
+        height: 25
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2 * 3,
+    historyLength: 50,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 2.5) * 7;
+        var newY = cos(y / 1.25) * sin(y / 2.5) * 6.5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+var ultraSimpleSpiral = new System({
+    startPosition: { x: -4, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 10,
+        height: 10
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 2,
+        y: 2
+    },
+    // rotate: Math.PI / 2 * 3,
+    historyLength: 50,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 2.5) * 7;
+        var newY = cos(y / 5) * sin(y / 2.5) * 6.5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+var ultraSimpleSpiral02 = new System({
+    startPosition: { x: 0, y: -1 },
+    velocity: { x: 0.2, y: 0.1 },
+    box: {
+        width: 10,
+        height: 5
+    },
+    translate: {
+        x: 0,
+        y: 600
+    },
+    scale: {
+        x: 1,
+        y: 1
+    },
+    rotate: Math.PI / 2,
+    historyLength: 175,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 2.5) * cos(x / 5) * 10;
+        var newY = cos(y / 5) * sin(y / 2.5) * sin(y / 1.25) * 17;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "lines"
+});
+
+var system = ultraSimpleSpiral02;
