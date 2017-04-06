@@ -1250,5 +1250,78 @@ var ultraSimpleSpiral02 = new System({
     },
     displayFunction: "lines"
 });
+var basics = new System({
+    startPosition: { x: -150, y: 0 },
+    velocity: { x: 1, y: 5 },
+    box: {
+        width: 300,
+        height: 300
+    },
+    translate: {
+        x: 150,
+        y: 150
+    },
+    scale: {
+        x: 1,
+        y: 1
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = Math.abs(sin(x / 10)) * 5;
+        var newY = Math.abs(sin(y / 10)) * 5;
+        return { x: newX * 1, y: newY * 1 };
+    },
+    displayFunction: "dots"
+});
 
-var system = ultraSimpleSpiral02;
+var hopeAtTheMarket = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 400,
+        y: 0
+    },
+    scale: {
+        x: 12,
+        y: 12
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 300,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 5) * sin(x / 5) * 4.5 / 10;
+        var newY = sin(y / 2) * 3 / 10;
+        return { x: newX, y: newY };
+    },
+    displayFunction: function(h) {
+        if (!this.drawCount) {
+            this.drawCount = 0;
+        }
+        var size = 0.25;
+        for (var i = 0; i < (h.length - 1); i++) {
+            var pos = h[i];
+            var t = this.drawCount / 20;
+            var x = 0 + cos(t / (sin(t / 1000))) * 5;
+            var y = sin(t / (sin(t / 1000))) * 5;
+            var xx = pos.x;
+            var yy = pos.y;
+            var lerpX = sketch.lerp(x, xx, 0.85);
+            var lerpY = sketch.lerp(y, yy, 0.85);
+            var vec = sketch.createVector(lerpX, lerpY);
+            sketch.fill(255, 50);
+
+            // var colmap = sketch.map(sin(t / 100), -1, 1, 0, 205);
+            // var colmap2 = sketch.map(Math.abs(xx), 0, sketch.width, 0, 255);
+            // var colmap3 = sketch.map(sin(t / 100), -1, 1, 150, 0);
+            // sketch.fill(colmap, colmap2, colmap3, 50);
+            sketch.ellipse(vec.x, vec.y, 0.1);
+            this.drawCount++;
+        }
+    }
+});
+
+var system = hopeAtTheMarket;
