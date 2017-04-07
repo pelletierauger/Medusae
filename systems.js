@@ -1375,4 +1375,54 @@ var hopeAtTheMarketColor = new System({
     backgroundColor: 0
 });
 
-var system = hopeAtTheMarketColor;
+var hopeAtTheMarketColor2 = new System({
+    startPosition: { x: -2, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 12,
+        y: 12
+    },
+    rotate: Math.PI / 2,
+    historyLength: 300,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 5) * cos(x / 10) * 4.5 / 10;
+        var newY = sin(y / 2) * cos(y / 10) * 3 / 10;
+        return { x: newX, y: newY };
+    },
+    displayFunction: function(h) {
+        if (!this.drawCount) {
+            this.drawCount = 0;
+        }
+        var size = 0.25;
+        for (var i = 0; i < (h.length - 1); i++) {
+            var pos = h[i];
+            var t = this.drawCount / 20;
+            var x = cos(t / (sin(t / 1000))) * 5;
+            var y = sin(t / (sin(t / 1000))) * 5;
+            var xx = pos.x;
+            var yy = pos.y;
+            var lerpX = sketch.lerp(x, xx, 0.95);
+            var lerpY = sketch.lerp(y, yy, 0.95);
+            var vec = sketch.createVector(lerpX, lerpY);
+            // sketch.fill(255, 50);
+
+            var colmap = sketch.map(sin(t / 400), -1, 1, 70, 255);
+            var colmap2 = sketch.map(Math.abs(yy), 0, sketch.height / 20, 255, 0);
+            var colmap3 = sketch.map(sin(t / 400), -1, 1, 150, 0);
+            sketch.fill(colmap, colmap2, colmap3, 50);
+            sketch.ellipse(vec.x, vec.y * 1.8, 0.1);
+            this.drawCount++;
+        }
+    },
+    backgroundColor: 0
+});
+
+var system = hopeAtTheMarketColor2;
