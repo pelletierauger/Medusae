@@ -9,7 +9,7 @@ var System = function(particle) {
     this.historyLength = particle.historyLength;
     this.trailFunction = particle.trailFunction;
     this.displayFunction = particle.displayFunction || "dots";
-
+    this.backgroundColor = (particle.backgroundColor == null) ? 51 : particle.backgroundColor;
 }
 
 System.prototype.update = function() {

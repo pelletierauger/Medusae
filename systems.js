@@ -1321,7 +1321,8 @@ var hopeAtTheMarket = new System({
             sketch.ellipse(vec.x, vec.y, 0.1);
             this.drawCount++;
         }
-    }
+    },
+    backgroundColor: 0
 });
 
 var system = hopeAtTheMarket;
