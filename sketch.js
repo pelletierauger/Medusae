@@ -14,7 +14,6 @@ var sketch = new p5(function(p) {
         p.canvas = p.createCanvas(p.windowWidth, p.windowHeight);
         p.canvas.addClass('one');
         p.background(system.backgroundColor);
-        console.log(system.backgroundColor);
         p.noStroke();
         p.frameRate(30);
     }
