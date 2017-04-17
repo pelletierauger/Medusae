@@ -70,9 +70,11 @@ var geometry = new p5(function(p) {
         p.rotate(system.rotate);
         p.translate(system.translate.x, system.translate.y);
         p.scale(system.scale.x, system.scale.y);
-        p.noFill();
-        p.stroke(255, 0, 0);
-        p.rect(-system.box.width / 2, -system.box.height / 2, system.box.width, system.box.height);
+        if (system.updateFunction == "box") {
+            p.noFill();
+            p.stroke(255, 0, 0);
+            p.rect(-system.box.width / 2, -system.box.height / 2, system.box.width, system.box.height);
+        }
         p.fill(255, 0, 0);
         p.noStroke();
         p.ellipse(system.position.x, system.position.y, 5 / system.scale.x, 5 /  system.scale.y);
