@@ -1425,4 +1425,84 @@ var hopeAtTheMarketColor2 = new System({
     backgroundColor: 0
 });
 
-var system = hopeAtTheMarketColor2;
+var windsOfSpring001 = new System({
+    startPosition: { x: -25 / 4, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    // rotate: Math.PI / 2,
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 2.5) * cos(x / 5) * 2.5;
+        var newY = sin(y / 2.5) * 2.5;
+        return { x: newX * 2.125, y: newY * 1.25 };
+    },
+    displayFunction: "lines"
+});
+
+var windsOfSpring002 = new System({
+    startPosition: { x: -25 / 4, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 2.5) * cos(x / 5) * 2.5;
+        var newY = sin(y / 5) * cos(y / 5) * 2.5;
+        return { x: newX * 2.125, y: newY * 2.45 };
+    },
+    displayFunction: "lines"
+});
+
+var windsOfSpring003 = new System({
+    startPosition: { x: -25 / 4, y: 0 },
+    velocity: { x: 0.2, y: 0.2 },
+    box: {
+        width: 25,
+        height: 50
+    },
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 3,
+        y: 3
+    },
+    historyLength: 100,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 2.5) * 2.5;
+        var newY = sin(y / 2.5) * 2.5;
+        return { x: newX * 3.45, y: newY * 3.45 };
+    },
+    displayFunction: "lines",
+    updateFunction: function(t) {
+        return {
+            x: cos(t / 10) * 15,
+            y: sin(t / 10) * 15
+        }
+    }
+});
+
+
+var system = windsOfSpring003;

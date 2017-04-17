@@ -10,18 +10,25 @@ var System = function(particle) {
     this.trailFunction = particle.trailFunction;
     this.displayFunction = particle.displayFunction || "dots";
     this.backgroundColor = (particle.backgroundColor == null) ? 51 : particle.backgroundColor;
+    this.updateFunction = particle.updateFunction || "box";
 }
 
 System.prototype.update = function() {
-    this.position = p5.Vector.add(this.position, this.velocity);
-    var x = this.position.x;
-    var y = this.position.y;
-    if (this.position.x > (this.box.width / 2) || this.position.x < -this.box.width / 2) {
-        this.velocity.x *= -1;
-    }
+    if (this.updateFunction !== "box") {
+        this.position = this.updateFunction(sketch.frameCount);
+        var x = this.position.x;
+        var y = this.position.y;
+    } else {
+        this.position = p5.Vector.add(this.position, this.velocity);
+        var x = this.position.x;
+        var y = this.position.y;
+        if (this.position.x > (this.box.width / 2) || this.position.x < -this.box.width / 2) {
+            this.velocity.x *= -1;
+        }
 
-    if (this.position.y > (this.box.height / 2) || this.position.y < -this.box.height / 2) {
-        this.velocity.y *= -1;
+        if (this.position.y > (this.box.height / 2) || this.position.y < -this.box.height / 2) {
+            this.velocity.y *= -1;
+        }
     }
 
     for (var i = 0; i < this.history.length; i++) {
