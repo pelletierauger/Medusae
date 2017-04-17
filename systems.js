@@ -1475,12 +1475,6 @@ var windsOfSpring002 = new System({
 });
 
 var windsOfSpring003 = new System({
-    startPosition: { x: -25 / 4, y: 0 },
-    velocity: { x: 0.2, y: 0.2 },
-    box: {
-        width: 25,
-        height: 50
-    },
     translate: {
         x: 0,
         y: 0
@@ -1503,6 +1497,5 @@ var windsOfSpring003 = new System({
         }
     }
 });
-
 
 var system = windsOfSpring003;
