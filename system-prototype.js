@@ -1,7 +1,18 @@
 var System = function(particle) {
-    this.position = new p5.Vector(particle.startPosition.x, particle.startPosition.y);
-    this.velocity = new p5.Vector(particle.velocity.x, particle.velocity.y);
-    this.box = particle.box;
+    if (particle.startPosition) {
+        this.position = new p5.Vector(particle.startPosition.x, particle.startPosition.y);
+    } else {
+        this.position = new p5.Vector(0, 0);
+    }
+    if (particle.velocity) {
+        this.velocity = new p5.Vector(particle.velocity.x, particle.velocity.y);
+    } else {
+        this.velocity = new p5.Vector(0, 0);
+    }
+    this.box = particle.box || {
+        width: 10,
+        height: 10
+    };
     this.history = [];
     this.translate = particle.translate || { x: 0, y: 0 };
     this.rotate = particle.rotate || 0;
