@@ -82,7 +82,7 @@ var geometry = new p5(function(p) {
                 p.beginShape();
                 p.vertex(system.position.x, system.position.y);
                 for (var j = 0; j < 1000; j++) {
-                    var fakeUpdate = system.staticUpdate(pos, vel);
+                    var staticUpdate = system.staticUpdate(pos, vel);
                     pos = staticUpdate.pos;
                     vel = staticUpdate.vel;
                     p.vertex(pos.x, pos.y);
