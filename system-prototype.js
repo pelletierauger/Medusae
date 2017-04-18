@@ -57,6 +57,23 @@ System.prototype.update = function() {
     this.sumOfIterations++;
 }
 
+System.prototype.staticUpdate = function(pos, vel) {
+    pos = p5.Vector.add(pos, vel);
+    var x = pos.x;
+    var y = pos.y;
+    if (x > (this.box.width / 2) || x < -this.box.width / 2) {
+        vel.x *= -1;
+    }
+
+    if (y > (this.box.height / 2) || y < -this.box.height / 2) {
+        vel.y *= -1;
+    }
+    return {
+        pos: pos,
+        vel: vel
+    };
+}
+
 System.prototype.displayDots = function(h) {
     var size = 1;
     for (var i = 0; i < (h.length - 1); i++) {
