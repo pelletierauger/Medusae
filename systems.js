@@ -1923,5 +1923,60 @@ var windsOfSpring013 = new System({
     }
 });
 
+var windsOfSpring014 = new System({
+    translate: {
+        x: 0,
+        y: 0
+    },
+    scale: {
+        x: 1,
+        y: 1
+    },
+    historyLength: 100,
+    backgroundColor: 0,
+    // rotate: Math.PI / 2,
+    trailFunction: function(x, y) {
+        var newX = sin(x / 50);
+        var newY = sin(y / 5) * cos(y / 5);
+        return { x: newX * 200, y: newY * 110 };
+    },
+    displayFunction: function(h) {
+        if (!this.drawCount) {
+            this.drawCount = 0;
+        }
+        var size = 1;
+        for (var i = 0; i < (h.length - 1); i++) {
+            var t = this.drawCount / 20;
+            var pos = h[(h.length - 1) - i];
+            var yy = pos.y;
+            var alpha = sketch.map(i, 0, h.length, 0, 255);
+            sketch.push();
+            sketch.translate(pos.x, pos.y);
+            sketch.fill(255, alpha);
+            var colmap = sketch.map(sin(t / 400), -1, 1, 70, 255);
+            var colmap2 = sketch.map(Math.abs(yy), 0, sketch.height / 5, 255, 0);
+            var colmap3 = sketch.map(sin(t / 400), -1, 1, 150, 0);
+            sketch.fill(colmap, colmap2, colmap3, 50);
+            sketch.ellipse(0, 0, size, size);
 
-var system = windsOfSpring013;
+            for (var j = 0; j < 30; j++) {
+                var sX = sketch.random(-10, 10);
+                var sY = sketch.random(-10, 10);
+                var mappy = sketch.map(Math.abs(sX) + Math.abs(sY), 0, 20, 255, 0);
+                // sketch.fill(255, mappy, 0, alpha * 0.1);
+                sketch.fill(colmap, colmap2, colmap3, 5);
+                sketch.ellipse(sX, sY, size / 2, size / 2);
+            }
+            sketch.pop();
+            this.drawCount++;
+        }
+    },
+    updateFunction: function(t) {
+        return {
+            x: cos(t / 5) * 15,
+            y: sin(t / 5) * 15
+        }
+    }
+});
+
+var system = windsOfSpring014;
