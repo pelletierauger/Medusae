@@ -88,13 +88,14 @@ System.prototype.displayDots = function(h) {
 };
 
 System.prototype.displayLines = function(h) {
-    sketch.beginShape(sketch.LINES);
+    // sketch.beginShape(sketch.LINES);
+    sketch.beginShape();
     sketch.noFill();
     sketch.strokeWeight(0.25);
     sketch.stroke(255, 125);
     for (var i = h.length - 1; i >= 1; i--) {
         sketch.vertex(h[i].x, h[i].y);
-        sketch.vertex(h[i - 1].x, h[i - 1].y);
+        // sketch.vertex(h[i - 1].x, h[i - 1].y);
     }
     sketch.endShape();
 }
