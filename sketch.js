@@ -18,15 +18,14 @@ var sketch = new p5(function(p) {
         p.frameRate(30);
     }
     p.draw = function() {
-        // p.background(51);
         p.translate(p.width / 2, p.height / 2);
         p.rotate(system.rotate);
         p.translate(system.translate.x, system.translate.y);
         p.scale(system.scale.x, system.scale.y);
-        // p.fill(255, 0, 0, 50);
-        // p.ellipse(loneParticle.position.x, loneParticle.position.y, 1, 1);
-        system.update();
-        system.displayHistory();
+        for (var i = 0; i <  system.iterationsPerFrame; i++) {
+            system.update();
+            system.displayHistory();
+        }
     }
     p.keyPressed = function() {
         if (p.keyCode === 32) {
@@ -69,13 +68,15 @@ var geometry = new p5(function(p) {
         p.rotate(system.rotate);
         p.translate(system.translate.x, system.translate.y);
         p.scale(system.scale.x, system.scale.y);
-        if (system.updateFunction == "box") {
-            p.noFill();
-            p.stroke(255, 0, 0);
-            p.rect(-system.box.width / 2, -system.box.height / 2, system.box.width, system.box.height);
+        for (var i = 0; i < system.iterationsPerFrame; i++) {
+            if (system.updateFunction == "box") {
+                p.noFill();
+                p.stroke(255, 0, 0);
+                p.rect(-system.box.width / 2, -system.box.height / 2, system.box.width, system.box.height);
+            }
+            p.fill(255, 0, 0);
+            p.noStroke();
+            p.ellipse(system.position.x, system.position.y, 5 / system.scale.x, 5 /  system.scale.y);
         }
-        p.fill(255, 0, 0);
-        p.noStroke();
-        p.ellipse(system.position.x, system.position.y, 5 / system.scale.x, 5 /  system.scale.y);
     }
 });

@@ -22,11 +22,13 @@ var System = function(particle) {
     this.displayFunction = particle.displayFunction || "dots";
     this.backgroundColor = (particle.backgroundColor == null) ? 51 : particle.backgroundColor;
     this.updateFunction = particle.updateFunction || "box";
+    this.iterationsPerFrame = particle.iterationsPerFrame || 1;
+    this.sumOfIterations = 0;
 }
 
 System.prototype.update = function() {
     if (this.updateFunction !== "box") {
-        this.position = this.updateFunction(sketch.frameCount);
+        this.position = this.updateFunction(this.sumOfIterations);
         var x = this.position.x;
         var y = this.position.y;
     } else {
@@ -52,6 +54,7 @@ System.prototype.update = function() {
     if (this.history.length > this.historyLength) {
         this.history.splice(0, 1);
     }
+    this.sumOfIterations++;
 }
 
 System.prototype.displayDots = function(h) {
