@@ -43,9 +43,11 @@ var sketch = new p5(function(p) {
             if (showGeometry) {
                 showGeometry = false;
                 geometry.canvas.style("display", "none");
+                geometry.noLoop();
             } else {
                 showGeometry = true;
                 geometry.canvas.style("display", "block");
+                geometry.loop();
             }
         }
         if (p.key == 'q' || p.key == 'Q') {
@@ -73,6 +75,29 @@ var geometry = new p5(function(p) {
                 p.noFill();
                 p.stroke(255, 0, 0);
                 p.rect(-system.box.width / 2, -system.box.height / 2, system.box.width, system.box.height);
+
+                var pos = p.createVector(system.position.x, system.position.y);
+                var vel = p.createVector(system.velocity.x, system.velocity.y);
+                p.stroke(255, 0, 0, 100);
+                p.beginShape();
+                p.vertex(system.position.x, system.position.y);
+                for (var j = 0; j < 1000; j++) {
+                    var fakeUpdate = system.staticUpdate(pos, vel);
+                    pos = staticUpdate.pos;
+                    vel = staticUpdate.vel;
+                    p.vertex(pos.x, pos.y);
+                }
+                p.endShape(p.OPEN);
+            } else {
+                p.noFill();
+                p.stroke(255, 0, 0, 100);
+                p.beginShape();
+                p.vertex(system.position.x, system.position.y);
+                for (var j = 0; j < 65; j++) {
+                    var v = system.updateFunction(system.sumOfIterations + j);
+                    p.vertex(v.x, v.y);
+                }
+                p.endShape(p.OPEN);
             }
             p.fill(255, 0, 0);
             p.noStroke();
