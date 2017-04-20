@@ -18,6 +18,11 @@ var sketch = new p5(function(p) {
         p.frameRate(30);
     }
     p.draw = function() {
+        if (system.sumOfIterations == system.maxIterations) {
+            p.noLoop();
+            geometry.noLoop();
+            looping = false;
+        }
         p.translate(p.width / 2, p.height / 2);
         p.rotate(system.rotate);
         p.translate(system.translate.x, system.translate.y);

@@ -24,6 +24,7 @@ var System = function(particle) {
     this.updateFunction = particle.updateFunction || "box";
     this.iterationsPerFrame = particle.iterationsPerFrame || 1;
     this.sumOfIterations = 0;
+    this.maxIterations = particle.maxIterations || Infinity;
 }
 
 System.prototype.update = function() {
